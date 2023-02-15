@@ -1,0 +1,18 @@
+<zk>
+	<borderlayout hflex="1" vflex="1" apply="org.example.viewmodel.MainViewModel">
+		<west width="260px" border="none" collapsible="true"
+			  splittable="true" minsize="300">
+			<grid hflex="1" vflex="1" id="sidebar">
+				<columns>
+					<column width="36px"/>
+					<column/>
+				</columns>
+				<rows>
+				</rows>
+			</grid>
+		</west>
+		<center id="mainContent" autoscroll="true">
+			<include id="includeMainContent" src="/home.zul" />
+		</center>
+	</borderlayout>
+</zk>

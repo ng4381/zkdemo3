@@ -1,0 +1,73 @@
+<grid id="formGrid" hflex="1" vflex="1" apply="org.example.viewmodel.CompanyViewModel">
+    <auxhead>
+        <auxheader colspan="2" label="Компании" iconSclass="z-icon-building"/>
+    </auxhead>
+    <columns visible="false">
+        <column/>
+        <column/>
+    </columns>
+    <rows>
+        <row>
+            Наименование компании
+            <textbox id="companyNameTextBox" hflex="1" constraint="no empty"/>
+        </row>
+        <row>
+            Правовая форма
+            <radiogroup id="radioBtn">
+                <radio label="ООО" value="1" checked="true"/>
+                <radio label="ИП" value="2"/>
+                <radio label="АО" value="3"/>
+            </radiogroup>
+        </row>
+        <row>
+            Адрес компании
+
+            <inputgroup>
+                Индекс: <textbox id="zip" hflex="1" constraint="no empty"/>
+                Город: <textbox id="city" hflex="1" constraint="no empty"/>
+                Улица: <textbox id="street" hflex="1" constraint="no empty"/>
+                Дом: <intbox id="house" hflex="1" constraint="no empty"/>
+                Квартира: <intbox id="flat" hflex="1" constraint="no empty"/>
+            </inputgroup>
+
+        </row>
+        <row spans="2">
+            <button id="saveCompany" label="Save"/>
+        </row>
+        <row  spans="2">
+            <listbox id="companiesListBox" emptyMessage="Компании не найдены">
+                <listhead>
+                    <listheader label="Id"/>
+                    <listheader label="Имя компании"/>
+                    <listheader label="Адрес"/>
+                </listhead>
+                <template name="model">
+                    <listitem>
+                        <listcell label="${each.id}"></listcell>
+                        <listcell label="${each.name}"></listcell>
+                        <listcell label="${each.address}"></listcell>
+                    </listitem>
+                </template>
+            </listbox>
+        </row>
+        <row spans="2">
+            Филиалы компании
+        </row>
+        <row  spans="2">
+            <listbox id="filialsListBox" emptyMessage="Филиалы не найдены">
+                <listhead>
+                    <listheader label="Id"/>
+                    <listheader label="Имя филиала"/>
+                    <listheader label="Адрес"/>
+                </listhead>
+                <template name="model">
+                    <listitem>
+                        <listcell label="${each.id}"></listcell>
+                        <listcell label="${each.name}"></listcell>
+                        <listcell label="${each.address}"></listcell>
+                    </listitem>
+                </template>
+            </listbox>
+        </row>
+    </rows>
+</grid>
