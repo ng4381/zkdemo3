@@ -4,7 +4,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import org.example.dto.FilialDto;
-import org.example.entity.Company;
 import org.example.entity.Filial;
 import org.hibernate.SessionFactory;
 
@@ -14,6 +13,10 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class FilialService {
     private final SessionFactory sessionFactory;
+
+    public String getAllViolations(Filial filial) {
+        return ValidationService.getAllViolations(filial);
+    }
 
     public void saveFilial(Filial filial) {
         EntityManager entityManager = sessionFactory.createEntityManager();

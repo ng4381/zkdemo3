@@ -9,42 +9,42 @@
     <rows>
         <row>
             Наименование компании
-            <textbox id="companyNameTextBox" hflex="1" constraint="no empty"/>
+            <textbox id="companyNameTextBox" hflex="1" />
+<!--            <textbox id="companyNameTextBox" hflex="1" constraint="no empty"/>-->
         </row>
         <row>
             Правовая форма
-            <radiogroup id="radioBtn">
-                <radio label="ООО" value="1" checked="true"/>
-                <radio label="ИП" value="2"/>
-                <radio label="АО" value="3"/>
+            <radiogroup id="legalEntityType">
+                <radio label="АО" value="${each}"/>
             </radiogroup>
         </row>
         <row>
             Адрес компании
-
-            <inputgroup>
-                Индекс: <textbox id="zip" hflex="1" constraint="no empty"/>
-                Город: <textbox id="city" hflex="1" constraint="no empty"/>
-                Улица: <textbox id="street" hflex="1" constraint="no empty"/>
-                Дом: <intbox id="house" hflex="1" constraint="no empty"/>
-                Квартира: <intbox id="flat" hflex="1" constraint="no empty"/>
+            <inputgroup height="30px">
+                <textbox id="zip" hflex="1" placeholder="Индекс" />
+                <textbox id="city" hflex="1" placeholder="Город"/>
+                <textbox id="street" hflex="1" placeholder="Улица"/>
+                <intbox id="house" hflex="1" placeholder="Дом"/>
+                <intbox id="flat" hflex="1" placeholder="Квартира"/>
             </inputgroup>
 
         </row>
         <row spans="2">
             <button id="saveCompany" label="Save"/>
         </row>
-        <row  spans="2">
-            <listbox id="companiesListBox" emptyMessage="Компании не найдены">
+        <row spans="2">
+            <listbox id="companiesListBox" emptyMessage="Компании не найдены"  mold="paging" pageSize="6">
                 <listhead>
                     <listheader label="Id"/>
                     <listheader label="Имя компании"/>
+                    <listheader label="Правовая форма"/>
                     <listheader label="Адрес"/>
                 </listhead>
                 <template name="model">
                     <listitem>
                         <listcell label="${each.id}"></listcell>
                         <listcell label="${each.name}"></listcell>
+                        <listcell label="${each.legalEntityType}"></listcell>
                         <listcell label="${each.address}"></listcell>
                     </listitem>
                 </template>
@@ -54,7 +54,7 @@
             Филиалы компании
         </row>
         <row  spans="2">
-            <listbox id="filialsListBox" emptyMessage="Филиалы не найдены">
+            <listbox id="filialsListBox" emptyMessage="Филиалы не найдены" mold="paging" pageSize="3">
                 <listhead>
                     <listheader label="Id"/>
                     <listheader label="Имя филиала"/>

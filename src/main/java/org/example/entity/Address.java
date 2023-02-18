@@ -1,8 +1,12 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
+//import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "addresses")
@@ -17,23 +21,30 @@ public class Address {
     @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
+
     @Column(name = "zip")
     private String zip;
 
-    @Column(name = "city")
+    @NotEmpty
+    @NotNull
+    @Column(name = "city", nullable = false)
     private String city;
 
-    @Column(name = "street")
+    @NotEmpty
+    @NotNull
+    @Column(name = "street", nullable = false)
     private String street;
 
-    @Column(name = "house")
-    private int house;
+
+    @NotNull
+    @Column(name = "house", nullable = false)
+    private Integer house;
 
     @Column(name = "flat")
-    private int flat;
+    private Integer flat;
 
     @Override
     public String toString() {
-        return String.format("%s, %s, %s, %s, %s", zip, city, street, house, flat);
+        return String.format("%s, %s, %s, %s, %s", zip, city, street, house, flat != null ? flat : "");
     }
 }

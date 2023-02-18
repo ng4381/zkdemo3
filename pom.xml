@@ -82,6 +82,57 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>6.1.7.Final</version>
 		</dependency>
+
+
+
+
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>2.0.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.0.13.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.el</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>org.glassfish</groupId>-->
+<!--			<artifactId>jakarta.el</artifactId>-->
+<!--			<version>4.0.2</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.hibernate</groupId>-->
+<!--			<artifactId>hibernate-validator</artifactId>-->
+<!--			<version>8.0.0.Final</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>jakarta.validation</groupId>-->
+<!--			<artifactId>jakarta.validation-api</artifactId>-->
+<!--			<version>3.0.2</version>-->
+<!--		</dependency>-->
+
+
+
+
+
+
+<!--		<dependency>-->
+<!--			<groupId>org.hibernate</groupId>-->
+<!--			<artifactId>hibernate-validator</artifactId>-->
+<!--			<version>8.0.0.Final</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.hibernate.validator</groupId>-->
+<!--			<artifactId>hibernate-validator-cdi</artifactId>-->
+<!--			<version>8.0.0.Final</version>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -91,6 +142,11 @@
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
 			<version>4.19.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.11</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -174,6 +230,7 @@
 					<configuration>
 						<properties>
 							<cargo.hostname>127.0.0.1</cargo.hostname>
+							<cargo.servlet.port>8081</cargo.servlet.port>
 							<cargo.jboss.management-http.port>9990</cargo.jboss.management-http.port>
 							<cargo.servlet.users>testUser:admin1234!</cargo.servlet.users>
 						</properties>

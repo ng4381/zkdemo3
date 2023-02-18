@@ -37,9 +37,8 @@ public class MainViewModel extends SelectorComposer<Component> {
     private Row constructSidebarRow(String name, String label, String imageSrc, final String locationUri) {
 
         Row row = new Row();
-//        Image image = new Image(imageSrc);
+        Image image = new Image(imageSrc);
 //        Label image = new Label("-");
-        Image image = new Image("z-icon-home");
         Label lab = new Label(label);
 
         row.appendChild(image);

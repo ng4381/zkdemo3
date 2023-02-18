@@ -59,4 +59,9 @@ http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibas
             </column>
         </addColumn>
     </changeSet>
+    <changeSet id="cr_103" author="Nikita Goloveshko">
+        <addColumn tableName="companies">
+            <column name="legalEntityType" type="int" />
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

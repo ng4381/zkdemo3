@@ -1,17 +1,30 @@
 package org.example;
 
+import org.apache.commons.lang3.StringUtils;
+import org.example.entity.Address;
+import org.example.service.AddressService;
 import org.example.sidepage.SidebarPageConfigAjaxbasedImpl;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import java.util.Optional;
 
 public class MyStarter {
     public static void main(String[] args) {
 
-        SidebarPageConfigAjaxbasedImpl sp = new SidebarPageConfigAjaxbasedImpl();
-        sp.getPages().forEach(System.out::println);
+//        SidebarPageConfigAjaxbasedImpl sp = new SidebarPageConfigAjaxbasedImpl();
+//        sp.getPages().forEach(System.out::println);
+
+
+
+//        SessionFactory sessionFactory = new Configuration().configure()
+//                .buildSessionFactory();
+
+        String strNull = null;
+
+        Optional.ofNullable(strNull).orElse(null);
 
         /*
-        SessionFactory sessionFactory = new Configuration().configure()
-                .buildSessionFactory();
-
         Address address = Address.builder()
                 .zip("123562")
                 .city("Haifa")
@@ -20,7 +33,14 @@ public class MyStarter {
                 .flat(1)
                 .build();
 
+        String addressViolations = new AddressService().getAllViolations(address);
+        System.out.println(addressViolations);
 
+        System.out.println(new AddressService().getAllViolations(address));
+
+         */
+
+        /*
 
         Company company = new Company();
         company.setName("qwe");

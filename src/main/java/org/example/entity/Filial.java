@@ -1,8 +1,11 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
+//import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
+
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "filial")
@@ -17,7 +20,8 @@ public class Filial {
     @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
-    @Column(name = "filialName")
+    @NotNull
+    @Column(name = "filialName", nullable = false)
     private String name;
 
     @OneToOne(cascade = CascadeType.ALL)

@@ -9,22 +9,22 @@
     <rows>
         <row>
             Наименование филиала
-            <textbox id="filialNameTextBox" hflex="1" constraint="no empty"/>
+            <textbox id="filialNameTextBox" hflex="1"/>
         </row>
         <row>
             Адрес филиала
-
-            <inputgroup>
-                Индекс: <textbox id="zip" hflex="1" constraint="no empty"/>
-                Город: <textbox id="city" hflex="1" constraint="no empty"/>
-                Улица: <textbox id="street" hflex="1" constraint="no empty"/>
-                Дом: <intbox id="house" hflex="1" constraint="no empty"/>
-                Квартира: <intbox id="flat" hflex="1" constraint="no empty"/>
+            <inputgroup height="30px">
+                <textbox id="zip" hflex="1" placeholder="Индекс"/>
+                <textbox id="city" hflex="1" placeholder="Город"/>
+                <textbox id="street" hflex="1" placeholder="Улица"/>
+                <intbox id="house" hflex="1" placeholder="Дом"/>
+                <intbox id="flat" hflex="1" placeholder="Квартира"/>
             </inputgroup>
 
         </row>
         <row>
-            <listbox id="companiesListBox" mold="select" width="200px">
+            Компания
+            <listbox id="companiesListBox" mold="select" width="200px" height="30px">
                 <template name="model">
                     <listitem label="${each.name}" />
                 </template>
@@ -34,7 +34,7 @@
             <button id="saveFilial" label="Save"/>
         </row>
         <row  spans="2">
-            <listbox id="filialsListBox" emptyMessage="Филиалы не найдены">
+            <listbox id="filialsListBox" emptyMessage="Филиалы не найдены" mold="paging" pageSize="6">
                 <listhead>
                     <listheader label="Id"/>
                     <listheader label="Имя филиала"/>

@@ -1,10 +1,12 @@
 package org.example.viewmodel;
 
+import org.apache.commons.lang3.StringUtils;
 import org.example.dto.CompanyDto;
 import org.example.dto.FilialDto;
 import org.example.entity.Address;
 import org.example.entity.Company;
 import org.example.entity.Filial;
+import org.example.service.AddressService;
 import org.example.service.CompanyService;
 import org.example.service.FilialService;
 import org.hibernate.SessionFactory;
@@ -15,12 +17,15 @@ import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.*;
 
+import java.util.Optional;
 import java.util.Set;
 
 public class FilialViewModel extends SelectorComposer<Component> {
 
     private CompanyService companyService;
     private FilialService filialService;
+
+    private AddressService addressService;
 
     @Wire
     private Listbox filialsListBox;
@@ -54,6 +59,7 @@ public class FilialViewModel extends SelectorComposer<Component> {
                 .buildSessionFactory();
         companyService = new CompanyService(sessionFactory);
         filialService = new FilialService(sessionFactory);
+        addressService = new AddressService();
 
         filialsListBox.setModel(filialsDataModel);
         companiesListBox.setModel(companiesDataModel);
@@ -70,12 +76,12 @@ public class FilialViewModel extends SelectorComposer<Component> {
     }
 
     private void emptyAllFields() {
-        filialNameTextBox.setValue("");
-        zip.setValue("");
-        city.setValue("");
-        street.setValue("");
-        house.setValue(0);
-        flat.setValue(0);
+        filialNameTextBox.setValue(null);
+        zip.setValue(null);
+        city.setValue(null);
+        street.setValue(null);
+        house.setValue(null);
+        flat.setValue(null);
     }
 
     @Override
@@ -111,6 +117,18 @@ public class FilialViewModel extends SelectorComposer<Component> {
                 .address(address)
                 .company(company)
                 .build();
+
+        String filialViolations = filialService.getAllViolations(filial);
+        String addressViolations = addressService.getAllViolations(address);
+
+        if (!StringUtils.isEmpty(filialViolations)) {
+            Messagebox.show(filialViolations);
+            return;
+        }
+        if (!StringUtils.isEmpty(addressViolations)) {
+            Messagebox.show(addressViolations);
+            return;
+        }
 
         filialService.saveFilial(filial);
         updateCompaniesDataModel();
